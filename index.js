@@ -14,7 +14,7 @@ app.use(express.json());
 const MONGO_USER = process.env.MONGO_DB_USER;
 const MONGO_PASSWORD = process.env.MONGO_DB_PASSWORD;
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@himukitchen.taxuk8x.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -114,6 +114,97 @@ app.get("/services", async (req, res) => {
     });
   }
 });
+
+// get singel service
+
+app.get("/services/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const service = await serviceCollection.findOne(query);
+    console.log(service);
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      data: service,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// add service
+
+app.post("/services", verifyTokenJwt, async (req, res) => {
+  try {
+    const service = req.body;
+    const result = await serviceCollection.insertOne(service);
+    res.send({
+      success: true,
+      message: "Successfully added the data",
+      data: result,
+    });
+  } catch {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// delete service by id
+
+app.delete("/services/:id", verifyTokenJwt, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const result = await serviceCollection.deleteOne(query);
+    res.send({
+      success: true,
+      message: "Successfully deleted the data",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// update service by id
+app.patch("/services/:id", verifyTokenJwt, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const service = req.body;
+    const updateDoc = {
+      $set: {
+        ...service,
+      },
+    };
+    const result = await serviceCollection.updateOne(query, updateDoc);
+    res.send({
+      success: true,
+      message: "Successfully updated the data",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+
 
 // ======================= Routes ===================================
 

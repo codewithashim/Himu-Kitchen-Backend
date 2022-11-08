@@ -1,0 +1,122 @@
+[
+  {
+    "service_id": 2,
+    "service_name": "Mangshor Jhol (Bengali Mutton Curry)",
+    "service_price": 150,
+    "service_description": "Mangsho generally refers to chicken or mutton and is usually used quite interchangeably. Mangshor Jhol basically refers to a traditional mutton curry made in the Bengali style. Jhol refers to a traditionally thin gravy but it changes from household to household. It is usually mildly spiced to ensure the freshness of the meat is retained. The natural gelatin from the bones imparts a silky smooth feel to the gravy. Fat from the mutton once cooked forms the rogan, which rises to the top and forms what appears to be a thick layer of oil.",
+    "img": "https://i.ibb.co/X5G6G57/Mangshor-Jhol.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 3,
+    "service_name": "Chicken Biryani",
+    "service_price": 200,
+    "service_description": "Chicken Biryani is a popular Indian dish made with basmati rice, chicken, and spices. It is a one-pot meal that is made by cooking rice and chicken together. The rice is cooked in a flavorful broth that is made with chicken stock, saffron, and spices. The chicken is cooked separately and then added to the rice. The chicken is cooked in a flavorful marinade that is made with yogurt, spices, and herbs. The chicken is then added to the rice and cooked together. The chicken and rice are cooked until the rice is tender and the chicken is cooked through. The chicken and rice are then served together in a bowl.",
+    "img": "https://i.ibb.co/L02gFQR/chikenbirani.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 4,
+    "service_name": "Chicken Tikka Masala",
+    "service_price": 250,
+    "service_description": "Chicken Tikka Masala is a popular Indian dish made with chicken, tomatoes, and spices. It is a one-pot meal that is made by cooking chicken and tomatoes together. The chicken is cooked in a flavorful marinade that is made with yogurt, spices, and herbs. The chicken is then added to the tomatoes and cooked together. The chicken and tomatoes are cooked until the tomatoes are tender and the chicken is cooked through. The chicken and tomatoes are then served together in a bowl.",
+    "img": "https://i.ibb.co/9Gn5fMc/Chiken-tikka.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 5,
+    "service_name": "Chicken Korma",
+    "service_price": 300,
+    "service_description": "Chicken Korma is a popular Indian dish made with chicken, yogurt, and spices. It is a one-pot meal that is made by cooking chicken and yogurt together. The chicken is cooked in a flavorful marinade that is made with yogurt, spices, and herbs. The chicken is then added to the yogurt and cooked together. The chicken and yogurt are cooked until the yogurt is tender and the chicken is cooked through. The chicken and yogurt are then served together in a bowl.",
+    "img": "https://i.ibb.co/f1Sr4KV/chiken-kurma.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 6,
+    "service_name": "Macher Jhol (Bengali Fish Curry)",
+    "service_price": 120,
+    "service_description": "Macher Jhol is a traditional Bengali fish curry made with mustard oil, spices, and herbs. It is a one-pot meal that is made by cooking fish and mustard oil together. The fish is cooked in a flavorful marinade that is made with mustard oil, spices, and herbs. The fish is then added to the mustard oil and cooked together. The fish and mustard oil are cooked until the mustard oil is tender and the fish is cooked through. The fish and mustard oil are then served together in a bowl.",
+    "img": "https://i.ibb.co/qWhtPzh/Macher-Jhol-1.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 7,
+    "service_name": "Lau Patai Pabda Paturi (Steamed Pabda Fish in Bottled Gourd Leaf)",
+    "service_price": 150,
+    "service_description": "Lau Patai Pabda Paturi is a traditional Bengali fish curry made with mustard oil, spices, and herbs. It is a one-pot meal that is made by cooking fish and mustard oil together. The fish is cooked in a flavorful marinade that is made with mustard oil, spices, and herbs. The fish is then added to the mustard oil and cooked together. The fish and mustard oil are cooked until the mustard oil is tender and the fish is cooked through. The fish and mustard oil are then served together in a bowl.",
+    "img": "https://i.ibb.co/zG3MpXg/Steamed-Pabda-Fish-in-Bottled-Gourd-Leaf.webp",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 8,
+    "service_name": "Pabda Paturi (Steamed Pabda Fish)",
+    "service_price": 200,
+    "service_description": "Pabda Paturi is a traditional Bengali fish curry made with mustard oil, spices, and herbs. It is a one-pot meal that is made by cooking fish and mustard oil together. The fish is cooked in a flavorful marinade that is made with mustard oil, spices, and herbs. The fish is then added to the mustard oil and cooked together. The fish and mustard oil are cooked until the mustard oil is tender and the fish is cooked through. The fish and mustard oil are then served together in a bowl.",
+    "img": "https://i.ibb.co/bs1s9M2/pabda-paturi.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 9,
+    "service_name": "Macher Matha Diye Moong Dal",
+    "service_price": 250,
+    "service_description": "Macher Matha Diye Moong Dal is a traditional Bengali fish curry made with mustard oil, spices, and herbs. It is a one-pot meal that is made by cooking fish and mustard oil together. The fish is cooked in a flavorful marinade that is made with mustard oil, spices, and herbs. The fish is then added to the mustard oil and cooked together. The fish and mustard oil are cooked until the mustard oil is tender and the fish is cooked through. The fish and mustard oil are then served together in a bowl.",
+    "img": "https://i.ibb.co/qntbDc4/Macher-Matha-Diye-Moog-Dal.jpg",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 10,
+    "service_name": "Shorshe Ilish",
+    "service_price": 300,
+    "service_description": "Shorshe Ilish is a traditional Bengali fish curry made with mustard oil, spices, and herbs. It is a one-pot meal that is made by cooking fish and mustard oil together. The fish is cooked in a flavorful marinade that is made with mustard oil, spices, and herbs. The fish is then added to the mustard oil and cooked together. The fish and mustard oil are cooked until the mustard oil is tender and the fish is cooked through. The fish and mustard oil are then served together in a bowl.",
+    "img": "https://i.ibb.co/JKbTbRx/Shorshe-Ilish.webp",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  },
+  {
+    "service_id": 11,
+    "service_name": " Ilish Paturi",
+    "service_price": 350,
+    "service_description": "Ilish Paturi is a traditional Bengali fish curry made with mustard oil, spices, and herbs. It is a one-pot meal that is made by cooking fish and mustard oil together. The fish is cooked in a flavorful marinade that is made with mustard oil, spices, and herbs. The fish is then added to the mustard oil and cooked together. The fish and mustard oil are cooked until the mustard oil is tender and the fish is cooked through. The fish and mustard oil are then served together in a bowl.",
+    "img": "https://i.ibb.co/WVhF4Fd/Hilsa-Cooked-in-Banana-Leaf-jpg.webp",
+    "service_category": "Food",
+    "rating": 4.5,
+    "service_status": "Available",
+    "service_provider": "Himu Kitchen",
+    "service_provider_img": "https://i.ibb.co/NxQjz2P/logo.jpg"
+  }
+]
