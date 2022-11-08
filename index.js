@@ -32,6 +32,12 @@ async function dbConnect() {
 }
 dbConnect();
 
+//=========================DB Collections=============================
+// const db = client.db("carDoctor"); // Database Name
+// const servicesCollection = db.collection("services"); // Collection Name
+const serviceCollection = client.db("himuKitchen").collection("services");
+const reviewCollection = client.db("himuKitchen").collection("review");
+
 // ======================= MongoDB Connection =======================
 
 // ======================= JWT Token =======================
@@ -88,6 +94,25 @@ app.post("/jwt", (req, res) => {
 // ======================= Routes ===================================
 app.get("/", (req, res) => {
   res.send("Hey Hemu Kitchen Server is running now we are cooking food");
+});
+
+// get all services
+app.get("/services", async (req, res) => {
+  try {
+    const cursor = serviceCollection.find({}).limit(3);
+    const services = await cursor.toArray();
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      data: services,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
 });
 
 // ======================= Routes ===================================
