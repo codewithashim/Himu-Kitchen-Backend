@@ -97,7 +97,7 @@ app.get("/", (req, res) => {
 });
 
 // get all services
-app.get("/services", async (req, res) => {
+app.get("/servicelimit", async (req, res) => {
   try {
     const cursor = serviceCollection.find({}).limit(3);
     const services = await cursor.toArray();
@@ -105,6 +105,33 @@ app.get("/services", async (req, res) => {
       success: true,
       message: "Successfully got the data",
       data: services,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+app.get("/services", async (req, res) => {
+  const page = parseInt(req.query.page);
+  const perPage = parseInt(req.query.perPage);
+  const services = await serviceCollection
+    .find({})
+    .skip(page * perPage)
+    .limit(perPage)
+    .toArray();
+  const count = await serviceCollection.estimatedDocumentCount();
+  // const cursor = serviceCollection.find({});
+  // const services = await cursor.toArray();
+  try {
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      count,
+      services,
     });
   } catch (error) {
     console.log(error.name.bgRed, error.message.bold);
@@ -207,6 +234,9 @@ app.patch("/services/:id", verifyTokenJwt, async (req, res) => {
 // adde review by user
 app.post("/reviews", async (req, res) => {
   const review = req.body;
+
+  // validdtion review on man can only give one review
+
   try {
     const result = await reviewCollection.insertOne(review);
     res.send({
@@ -225,7 +255,6 @@ app.post("/reviews", async (req, res) => {
 
 // get all review
 app.get("/reviews", async (req, res) => {
-  
   try {
     const cursor = reviewCollection.find({});
     const reviews = await cursor.toArray();
