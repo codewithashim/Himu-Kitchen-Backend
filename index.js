@@ -253,13 +253,10 @@ app.post("/reviews", async (req, res) => {
 
 // get all review
 app.get("/reviews", async (req, res) => {
-
-  console.log(req.query.services);
   let query = {};
-  if(req.query.services){
+  if (req.query.services) {
     query = { services: req.query.services };
   }
-
   try {
     const cursor = reviewCollection.find(query);
     const reviews = await cursor.toArray();
@@ -277,8 +274,26 @@ app.get("/reviews", async (req, res) => {
   }
 });
 
-// get singel review
+// get review by email
+app.get("/myreviews", async (req, res) => {
+  try {
+    const cursor = reviewCollection.find({ email: req.query.email });
+    const reviews = await cursor.toArray();
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      data: reviews,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
 
+// get singel review
 app.get("/reviews/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -298,6 +313,35 @@ app.get("/reviews/:id", async (req, res) => {
     });
   }
 });
+
+// update review by id
+
+app.patch("/reviews/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const review = req.body;
+    const updateDoc = {
+      $set: {
+        ...review,
+      },
+    };
+    const result = await reviewCollection.updateOne(query, updateDoc);
+    res.send({
+      success: true,
+      message: "Successfully updated the data",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// delete review by id
 
 // ======================= Routes ===================================
 
