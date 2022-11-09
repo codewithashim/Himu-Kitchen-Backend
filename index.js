@@ -231,12 +231,10 @@ app.patch("/services/:id", verifyTokenJwt, async (req, res) => {
   }
 });
 
-// adde review by user
+// adde review by user ======================
+
 app.post("/reviews", async (req, res) => {
   const review = req.body;
-
-  // validdtion review on man can only give one review
-
   try {
     const result = await reviewCollection.insertOne(review);
     res.send({
@@ -255,13 +253,42 @@ app.post("/reviews", async (req, res) => {
 
 // get all review
 app.get("/reviews", async (req, res) => {
+
+  console.log(req.query.services);
+  let query = {};
+  if(req.query.services){
+    query = { services: req.query.services };
+  }
+
   try {
-    const cursor = reviewCollection.find({});
+    const cursor = reviewCollection.find(query);
     const reviews = await cursor.toArray();
     res.send({
       success: true,
       message: "Successfully got the data",
       data: reviews,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// get singel review
+
+app.get("/reviews/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const review = await reviewCollection.findOne(query);
+    console.log(review);
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      data: review,
     });
   } catch (error) {
     console.log(error.name.bgRed, error.message.bold);
