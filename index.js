@@ -204,7 +204,44 @@ app.patch("/services/:id", verifyTokenJwt, async (req, res) => {
   }
 });
 
+// adde review by user
+app.post("/reviews", async (req, res) => {
+  const review = req.body;
+  try {
+    const result = await reviewCollection.insertOne(review);
+    res.send({
+      success: true,
+      message: "Successfully review added",
+      data: result,
+    });
+  } catch {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
 
+// get all review
+app.get("/reviews", async (req, res) => {
+  
+  try {
+    const cursor = reviewCollection.find({});
+    const reviews = await cursor.toArray();
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      data: reviews,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
 
 // ======================= Routes ===================================
 
