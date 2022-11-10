@@ -149,7 +149,7 @@ app.get("/services/:id", async (req, res) => {
     const id = req.params.id;
     const query = { _id: ObjectId(id) };
     const service = await serviceCollection.findOne(query);
-  
+
     res.send({
       success: true,
       message: "Successfully got the data",
@@ -258,7 +258,9 @@ app.get("/reviews", async (req, res) => {
     query = { services: req.query.services };
   }
   try {
-    const cursor = reviewCollection.find(query).sort({ timestamp: -1 });
+    const timestemps = new Date().getTime();
+    // const sort = { timestamp: -1 };
+    const cursor = reviewCollection.find(query).sort(timestemps);
     const reviews = await cursor.toArray();
     res.send({
       success: true,
@@ -301,7 +303,7 @@ app.get("/reviews/:id", async (req, res) => {
     const id = req.params.id;
     const query = { _id: ObjectId(id) };
     const review = await reviewCollection.findOne(query);
-    console.log(review);
+
     res.send({
       success: true,
       message: "Successfully got the data",
