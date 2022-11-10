@@ -149,7 +149,7 @@ app.get("/services/:id", async (req, res) => {
     const id = req.params.id;
     const query = { _id: ObjectId(id) };
     const service = await serviceCollection.findOne(query);
-    console.log(service);
+  
     res.send({
       success: true,
       message: "Successfully got the data",
@@ -166,7 +166,7 @@ app.get("/services/:id", async (req, res) => {
 
 // add service
 
-app.post("/services", verifyTokenJwt, async (req, res) => {
+app.post("/services", async (req, res) => {
   try {
     const service = req.body;
     const result = await serviceCollection.insertOne(service);
@@ -258,7 +258,7 @@ app.get("/reviews", async (req, res) => {
     query = { services: req.query.services };
   }
   try {
-    const cursor = reviewCollection.find(query);
+    const cursor = reviewCollection.find(query).sort({ timestamp: -1 });
     const reviews = await cursor.toArray();
     res.send({
       success: true,
@@ -277,7 +277,9 @@ app.get("/reviews", async (req, res) => {
 // get review by email
 app.get("/myreviews", async (req, res) => {
   try {
-    const cursor = reviewCollection.find({ email: req.query.email });
+    const cursor = reviewCollection
+      .find({ email: req.query.email })
+      .sort({ timestamp: -1 });
     const reviews = await cursor.toArray();
     res.send({
       success: true,
@@ -316,6 +318,33 @@ app.get("/reviews/:id", async (req, res) => {
 
 // update review by id
 
+app.put("/reviews/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const review = req.body;
+    const opction = { upsert: true };
+    const updateDoc = {
+      $set: {
+        rating: review.rating,
+        revew: review.revew,
+      },
+    };
+    const result = await reviewCollection.updateOne(query, updateDoc, opction);
+    res.send({
+      success: true,
+      message: "Successfully updated the data",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 app.patch("/reviews/:id", async (req, res) => {
   try {
     const id = req.params.id;
@@ -342,6 +371,29 @@ app.patch("/reviews/:id", async (req, res) => {
 });
 
 // delete review by id
+app.delete("/reviews/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    const result = await reviewCollection.deleteOne(query);
+
+    if (result.deletedCount === 0) {
+      throw new Error("No data found");
+    }
+
+    res.send({
+      success: true,
+      message: "Successfully deleted the data",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
 
 // ======================= Routes ===================================
 
