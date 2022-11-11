@@ -37,6 +37,7 @@ dbConnect();
 // const servicesCollection = db.collection("services"); // Collection Name
 const serviceCollection = client.db("himuKitchen").collection("services");
 const reviewCollection = client.db("himuKitchen").collection("review");
+const orderCollection = client.db("himuKitchen").collection("orders");
 
 // ======================= MongoDB Connection =======================
 
@@ -231,6 +232,67 @@ app.patch("/services/:id", verifyTokenJwt, async (req, res) => {
   }
 });
 
+// add orders===========
+
+app.post("/addOrders", async (req, res) => {
+  try {
+    const order = req.body;
+    const result = await orderCollection.insertOne(order);
+    res.send({
+      success: true,
+      message: "Successfully added the data",
+      data: result,
+    });
+  } catch {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// get all orders=========
+
+app.get("/orders", async (req, res) => {
+  try {
+    const cursor = orderCollection.find({});
+    const orders = await cursor.toArray();
+    res.send({
+      success: true,
+      message: "Successfully got the data",
+      data: orders,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
+// delete order by id
+
+app.delete("/orders/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const query = { _id: ObjectId(id) };
+    const result = await orderCollection.deleteOne(query);
+    res.send({
+      success: true,
+      message: "Successfully deleted the data",
+      data: result,
+    });
+  } catch (error) {
+    console.log(error.name.bgRed, error.message.bold);
+    res.send({
+      success: false,
+      error: error.message,
+    });
+  }
+});
+
 // adde review by user ======================
 
 app.post("/reviews", async (req, res) => {
@@ -258,9 +320,9 @@ app.get("/reviews", async (req, res) => {
     query = { services: req.query.services };
   }
   try {
-    const timestemps = new Date().getTime();
+    // const timestemps = new Date().getTime();
     // const sort = { timestamp: -1 };
-    const cursor = reviewCollection.find(query).sort(timestemps);
+    const cursor = reviewCollection.find(query).sort({ _id: -1 });
     const reviews = await cursor.toArray();
     res.send({
       success: true,
